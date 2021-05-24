@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "A simple response helper middleware for ExpressJS",
   "main": "index.js",
-  "repository": "https://github.com/isotech/node-server-response",
+  "repository": "https://github.com/isoteriktech/express-response-helper",
   "author": "isoterik",
   "license": "MIT",
   "private": false,
+  "bugs": {
+    "url": "https://github.com/isoteriktech/express-response-helper/issues"
+  },
+  "keywords": [
+    "express", "node", "response helper", "express response helper", "express http codes helper"
+  ],
   "devDependencies": {
     "express": "^4.17.1",
     "mocha": "^8.4.0",
