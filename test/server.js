@@ -10,15 +10,55 @@ server.get('/', (req, res) => {
 });
 
 server.post('/create', (req, res) => {
-  res.respondCreated(null, 'Resource Created');
+  res.respondCreated(null, 'Resource created');
 });
 
 server.post('/bad-request', (req, res) => {
   res.fail('Bad request');
 });
 
-server.post('/bad-request/errors', (req, res) => {
-  res.fail(['Error 1', 'Error 2', 'Error 3']);
+server.delete('/delete', (req, res) => {
+  res.respondDeleted(null, 'Resource deleted');
+});
+
+server.put('/update', (req, res) => {
+  res.respondUpdated(null, 'Resource updated');
+});
+
+server.put('/no-content', (req, res) => {
+  res.respondNoContent('No Content');
+});
+
+server.get('/unauthorized', (req, res) => {
+  res.failUnauthorized();
+});
+
+server.get('/forbidden', (req, res) => {
+  res.failForbidden();
+});
+
+server.get('/not-found', (req, res) => {
+  res.failNotFound();
+});
+
+server.post('/validation-error', (req, res) => {
+  res.failValidationError(['Error 1', 'Error 2', 'Error 3']);
+});
+
+server.post('/conflict', (req, res) => {
+  res.failResourceExists();
+});
+
+server.get('/gone', (req, res) => {
+  res.failResourceGone();
+});
+
+server.get('/overload', (req, res) => {
+  res.failTooManyRequests();
+});
+
+server.get('/server-error', (req, res) => {
+  res.failServerError();
 });
 
 server.listen(3001);

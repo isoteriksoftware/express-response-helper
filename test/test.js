@@ -13,10 +13,10 @@ describe('GET /', () => {
 });
 
 describe('POST /create', () => {
-  it('returns Resource Created', (done) => {
+  it('returns Resource created', (done) => {
     request
       .post('/create')
-      .expect(201, 'Resource Created')
+      .expect(201, 'Resource created')
       .end(done);
   });
 });
@@ -34,10 +34,10 @@ describe('POST /bad-request', () => {
   });
 });
 
-describe('POST /bad-request/errors', () => {
+describe('POST /validation-error', () => {
   it('returns Bad request object with errors', (done) => {
     request
-      .post('/bad-request/errors')
+      .post('/validation-error')
       .expect(400, {
         status: 400,
         error: 400,

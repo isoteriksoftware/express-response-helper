@@ -31,7 +31,6 @@ const responseCodes = {
 
 const responseHelper = (req, res, next) => {
   res.respond = (data = null, status = 200, message = '') => {
-    
     res.statusCode = status;
     if (data === null)
       res.end(message);
