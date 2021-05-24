@@ -29,7 +29,15 @@ const responseCodes = {
   temporarily_unavailable:   503,
 };
 
-const responseHelper = (req, res, next) => {
+const responseHelper = (req, res, next = null) => {
+  // For pure NodeJS support.
+  if (res.json === undefined) {
+    res.json = (data) => {
+      res.setHeader('content-type', 'application/json');
+      res.end(JSON.stringify(data));
+    };
+  }
+
   res.respond = (data = null, status = 200, message = '') => {
     res.statusCode = status;
     if (data === null)
@@ -60,8 +68,8 @@ const responseHelper = (req, res, next) => {
     res.respond(data, responseCodes.updated, message);
   };
 
-  res.respondNoContent = (message = 'No Content') => {
-    res.respond(null, responseCodes.created, message);
+  res.respondNoContent = () => {
+    res.respond(null, responseCodes.no_content);
   };
 
   res.failUnauthorized = (description = 'Unauthorized', code = null, message = '') => {
@@ -96,7 +104,8 @@ const responseHelper = (req, res, next) => {
     res.fail(description, responseCodes.server_error, code, message);
   };
 
-  next();
+  if (next !== null)
+      next();
 };
 
 module.exports = {

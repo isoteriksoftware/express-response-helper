@@ -57,7 +57,7 @@ server.get('/overload', (req, res) => {
   res.failTooManyRequests();
 });
 
-server.get('/server-error', (req, res) => {
+server.post('/server-error', (req, res) => {
   res.failServerError();
 });
 
