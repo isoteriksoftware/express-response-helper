@@ -20,3 +20,29 @@ describe('POST /create', () => {
       .end(done);
   });
 });
+
+describe('POST /bad-request', () => {
+  it('returns Bad request object', (done) => {
+    request
+      .post('/bad-request')
+      .expect(400, {
+        status: 400,
+        error: 400,
+        messages: 'Bad request'
+      })
+      .end(done);
+  });
+});
+
+describe('POST /bad-request/errors', () => {
+  it('returns Bad request object with errors', (done) => {
+    request
+      .post('/bad-request/errors')
+      .expect(400, {
+        status: 400,
+        error: 400,
+        messages: ['Error 1', 'Error 2', 'Error 3']
+      })
+      .end(done);
+  });
+});
