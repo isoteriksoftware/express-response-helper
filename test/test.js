@@ -13,10 +13,10 @@ describe('GET /', () => {
 });
 
 describe('POST /create', () => {
-  it('returns plain text and status code 201', (done) => {
+  it('returns Resource Created', (done) => {
     request
       .post('/create')
-      .expect(201, 'Created')
+      .expect(201, 'Resource Created')
       .end(done);
   });
 });
