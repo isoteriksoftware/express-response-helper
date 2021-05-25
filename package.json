@@ -1,6 +1,6 @@
 {
   "name": "express-response-helper",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple response helper middleware for ExpressJS",
   "main": "index.js",
   "repository": "https://github.com/isoteriktech/express-response-helper",
@@ -11,7 +11,11 @@
     "url": "https://github.com/isoteriktech/express-response-helper/issues"
   },
   "keywords": [
-    "express", "node", "response helper", "express response helper", "express http codes helper"
+    "express",
+    "node",
+    "response helper",
+    "express response helper",
+    "express http codes helper"
   ],
   "devDependencies": {
     "express": "^4.17.1",
