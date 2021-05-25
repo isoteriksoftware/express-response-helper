@@ -61,6 +61,4 @@ server.post('/server-error', (req, res) => {
   res.failServerError();
 });
 
-server.listen(3001);
-
-module.exports = server;
+module.exports = server.listen(3001);

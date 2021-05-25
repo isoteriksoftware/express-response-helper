@@ -174,3 +174,9 @@ describe('POST /server-error', () => {
       .end(done);
   });
 });
+
+describe('Terminate server', () => {
+  it('closes the server', (done) => {
+    server.close(done);
+  });
+});
