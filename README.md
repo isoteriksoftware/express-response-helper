@@ -315,5 +315,17 @@ app.get('/unavailable', function(req, res) {
 });
 ```
 <br></br>
+# Changelog
+Check the [GitHub Releases page](https://github.com/isoteriktech/express-response-helper/releases).
+
+<br></br>
+# Reporting Issues
+Use the [Issue Tracker](https://github.com/isoteriktech/express-response-helper/issues) on GitHub to report issues.
+
+<br></br>
+# Contributing
+Contributions are highly welcomed. Have features you want to add or bugs that you can fix? Head on to the [github repo](https://github.com/isoteriktech/express-response-helper) to make changes and create pull requests. Thank you in advance!
+
+<br></br>
 # License
 [MIT License](http://opensource.org/licenses/mit-license.html)
