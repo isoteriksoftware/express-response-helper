@@ -1,6 +1,6 @@
 # express-response-helper
 [![Build Status](https://travis-ci.com/isoteriktech/express-response-helper.svg?branch=main)](https://travis-ci.com/isoteriktech/express-response-helper)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/isoteriktech/express-response-helper/blob/main/LICENSE)
 
 A simple response helper for ExpressJS applications.
 
