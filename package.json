@@ -26,6 +26,7 @@
     "test": "mocha"
   },
   "files": [
-    "src/index.js"
+    "index.js",
+    "src/main.js"
   ]
 }

@@ -1,5 +1,5 @@
 const server = require('express')();
-const responseHelper = require('../src/index');
+const responseHelper = require('../index');
 
 // Use the helper middleware (on all routes)
 server.use(responseHelper.helper());
