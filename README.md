@@ -19,7 +19,7 @@ yarn add express-response-helper
 Once installed it can now be referenced by simply calling `require('express-response-helper');`
 
 # Example
-Calling `require('express-response-helper');` returns an object with two properties. One is a middleware that you can simply attach to your express object or an express route. This is the property that you'll often use:
+Calling `require('express-response-helper');` returns an object with two properties. One is a function that returns a middleware that you can simply attach to your express object or an express route. This is the property that you'll often use:
 
 ```javascript
 const responseHelper = require('express-response-helper').helper();
@@ -55,7 +55,7 @@ app.get('/404', function(req, res) {
   */
 });
 ```
-Notice how we didn't have to specify the HTTP status codes for each of our responses. With express-response-helper you don't have to remember the status code to use, just the context of the response. Cool!
+Notice how we didn't have to specify the HTTP status codes for each of our responses. With express-response-helper, you don't have to remember the status code to use, just the context of the response. Cool!
 
 # API
 The module returns an object with these properties:
@@ -97,7 +97,7 @@ app.post('/user', function(req, res) {
 ```
 <br></br>
 **.fail(messages [, status] [, code] [, customMessage])**: This function is a generic function for responses that generally indicate errors. All but one parameters are optional:
-  - `messages` can be a string, an object or an array of error messages indicating what went wrong. This parameter is the only require parameter.
+  - `messages` can be a string, an object or an array of error messages indicating what went wrong. This parameter is the only required parameter.
   - `status` is the HTTP status code and is 400 by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
   - `customMessage` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
