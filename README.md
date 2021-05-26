@@ -81,7 +81,7 @@ app.post('/user', function(req, res) {
   res.respondCreated(null, 'User Account Created');
 });
 ```
-
+<br></br>
 The middleware returned by `helper()` adds the following functions to the `response`(or res) parameter passed to your routes:
 
 **.respond([data] [, status] [, message])**: This function is a generic function for any kind of response. All the parameters are optional: 
