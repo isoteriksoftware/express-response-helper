@@ -84,7 +84,7 @@ const responseHelper = (req, res, next = null) => {
     res.fail(description, responseCodes.resource_not_found, code, message);
   };
 
-  res.failValidationError = (description = 'Bad Reques', code = null, message = '') => {
+  res.failValidationError = (description = 'Bad Request', code = null, message = '') => {
     res.fail(description, responseCodes.invalid_data, code, message);
   };
 
