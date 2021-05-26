@@ -16,7 +16,7 @@ or using yarn (if you have it):
 ```
 yarn add express-response-helper
 ```
-Once installed it can now be referenced by simply calling `require('express-response-helper');`
+Once installed, it can now be referenced by simply calling `require('express-response-helper');`
 
 # Example
 Calling `require('express-response-helper');` returns an object with two properties. One is a function that returns a middleware that you can simply attach to your express object or an express route. This is the property that you'll often use:
@@ -59,8 +59,8 @@ Notice how we didn't have to specify the HTTP status codes for each of our respo
 
 # API
 The module returns an object with these properties:
-- helper(): This is a function that returns the middleware to `use()` on your express object.
-- responseCodes: This is an object that holds the common HTTP status codes that the module currently uses internally. You can use this object to modify the predefined status codes. You usually don't have to modify these codes but if your specific application requires you to, it's possible.
+- `helper()`: This is a function that returns the middleware to `use()` on your express object.
+- `responseCodes`: This is an object that holds the common HTTP status codes that the module currently uses internally. You can use this object to modify the predefined status codes. You usually don't have to modify these codes but if your specific application requires you to, it's possible.
 
 Example:
 ```javascript
@@ -96,13 +96,12 @@ app.post('/user', function(req, res) {
 });
 ```
 <br></br>
-**.fail(messages [, status] [, code] [, customMessage])**: This function is a generic function for responses that generally indicate errors. All but one parameters are optional:
+**.fail(messages [, status] [, code])**: This function is a generic function for responses that generally indicate errors. All but one parameters are optional:
   - `messages` can be a string, an object or an array of error messages indicating what went wrong. This parameter is the only required parameter.
   - `status` is the HTTP status code and is 400 by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `customMessage` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
-This function internally generates a json response body in the standard IANA format. For example, when `messages` is a string and assuming `status` is 400 and `code` is null, the response looks like:
+  
+This function internally generate a json response body in the following format. For example, when `messages` is a string, `status` is 400 and `code` is null, the response looks like:
 ```json
 {
   "status": 400,
@@ -171,11 +170,10 @@ app.post('/clear_logs', function(req, res) {
 });
 ```
 <br></br>
-**.failUnauthorized([description] [, code] [, message])**: Returns a response with a status code of 401 by default. Useful when the client either has not been authorized, or has incorrect authorization. All parameters are optional:
+**.failUnauthorized([description] [, code])**: Returns a response with a status code of 401 by default. Useful when the client either has not been authorized, or has incorrect authorization. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Unauthorized** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.get('/secret', function(req, res) {
@@ -183,11 +181,10 @@ app.get('/secret', function(req, res) {
 });
 ```
 <br></br>
-**.failForbidden([description] [, code] [, message])**: Returns a response with a status code of 403 by default. Useful when the requested API endpoint is never allowed. Unauthorized implies the client is encouraged to try again with different credentials. Forbidden means the client should not try again because it won’t help. All parameters are optional:
+**.failForbidden([description] [, code])**: Returns a response with a status code of 403 by default. Useful when the requested API endpoint is never allowed. Unauthorized implies the client is encouraged to try again with different credentials. Forbidden means the client should not try again because it won’t help. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Forbidden** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.get('/forbidden', function(req, res) {
@@ -195,11 +192,10 @@ app.get('/forbidden', function(req, res) {
 });
 ```
 <br></br>
-**.failNotFound([description] [, code] [, message])**: Returns a response with a status code of 404 by default. Useful when the requested resource cannot be found. All parameters are optional:
+**.failNotFound([description] [, code])**: Returns a response with a status code of 404 by default. Useful when the requested resource cannot be found. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Not Found** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.get('/user/2', function(req, res) {
@@ -207,11 +203,10 @@ app.get('/user/2', function(req, res) {
 });
 ```
 <br></br>
-**.failValidationError([description] [, code] [, message])**: Returns a response with a status code of 400 by default. Useful when data the client sent did not pass validation rules. All parameters are optional:
+**.failValidationError([description] [, code])**: Returns a response with a status code of 400 by default. Useful when data the client sent did not pass validation rules. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Bad Request** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.post('/user', function(req, res) {
@@ -219,11 +214,10 @@ app.post('/user', function(req, res) {
 });
 ```
 <br></br>
-**.failResourceExists([description] [, code] [, message])**: Returns a response with a status code of 409 by default. Useful when the resource the client is trying to create already exists. All parameters are optional:
+**.failResourceExists([description] [, code])**: Returns a response with a status code of 409 by default. Useful when the resource the client is trying to create already exists. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Conflict** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.post('/user', function(req, res) {
@@ -231,11 +225,10 @@ app.post('/user', function(req, res) {
 });
 ```
 <br></br>
-**.failResourceGone([description] [, code] [, message])**: Returns a response with a status code of 410 by default. Useful when the requested resource was previously deleted and is no longer available. All parameters are optional:
+**.failResourceGone([description] [, code])**: Returns a response with a status code of 410 by default. Useful when the requested resource was previously deleted and is no longer available. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Gone** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.get('/user', function(req, res) {
@@ -243,11 +236,10 @@ app.get('/user', function(req, res) {
 });
 ```
 <br></br>
-**.failTooManyRequests([description] [, code] [, message])**: Returns a response with a status code of 429 by default. Useful when the client has called an API endpoint too many times. This might be due to some form of throttling or rate limiting. All parameters are optional:
+**.failTooManyRequests([description] [, code])**: Returns a response with a status code of 429 by default. Useful when the client has called an API endpoint too many times. This might be due to some form of throttling or rate limiting. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Too Many Requests** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.get('/data', function(req, res) {
@@ -255,11 +247,10 @@ app.get('/data', function(req, res) {
 });
 ```
 <br></br>
-**.failServerError([description] [, code] [, message])**: Returns a response with a status code of 500 by default. Useful when there is a server error. All parameters are optional:
+**.failServerError([description] [, code])**: Returns a response with a status code of 500 by default. Useful when there is a server error. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Internal Server Error** by default.
   - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
-  - `message` will be returned as the response body in place of a json body. Since this function will always return a non-null json response, this parameter is not that useful. You will often ignore it.
-
+  
 Example:
 ```javascript
 app.get('/user', function(req, res) {

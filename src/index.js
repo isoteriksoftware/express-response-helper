@@ -46,14 +46,14 @@ const responseHelper = (req, res, next = null) => {
       res.json(data);
   };
 
-  res.fail = (messages, status = 400, code = null, customMessage = '') => {
+  res.fail = (messages, status = 400, code = null) => {
     const response = {
       status:   status,
       error:    code || status,
       messages: messages
     };
 
-    res.respond(response, status, customMessage);
+    res.respond(response, status);
   };
 
   res.respondCreated = (data = null, message = '') => {
@@ -72,40 +72,40 @@ const responseHelper = (req, res, next = null) => {
     res.respond(null, responseCodes.no_content);
   };
 
-  res.failUnauthorized = (description = 'Unauthorized', code = null, message = '') => {
-    res.fail(description, responseCodes.unauthorized, code, message);
+  res.failUnauthorized = (description = 'Unauthorized', code = null) => {
+    res.fail(description, responseCodes.unauthorized, code);
   };
 
-  res.failForbidden = (description = 'Forbidden', code = null, message = '') => {
-    res.fail(description, responseCodes.forbidden, code, message);
+  res.failForbidden = (description = 'Forbidden', code = null) => {
+    res.fail(description, responseCodes.forbidden, code);
   };
 
-  res.failNotFound = (description = 'Not Found', code = null, message = '') => {
-    res.fail(description, responseCodes.resource_not_found, code, message);
+  res.failNotFound = (description = 'Not Found', code = null) => {
+    res.fail(description, responseCodes.resource_not_found, code);
   };
 
-  res.failValidationError = (description = 'Bad Request', code = null, message = '') => {
-    res.fail(description, responseCodes.invalid_data, code, message);
+  res.failValidationError = (description = 'Bad Request', code = null) => {
+    res.fail(description, responseCodes.invalid_data, code);
   };
 
-  res.failResourceExists = (description = 'Conflict', code = null, message = '') => {
-    res.fail(description, responseCodes.resource_exists, code, message);
+  res.failResourceExists = (description = 'Conflict', code = null) => {
+    res.fail(description, responseCodes.resource_exists, code);
   };
 
-  res.failResourceGone = (description = 'Gone', code = null, message = '') => {
-    res.fail(description, responseCodes.resource_gone, code, message);
+  res.failResourceGone = (description = 'Gone', code = null) => {
+    res.fail(description, responseCodes.resource_gone, code);
   };
 
-  res.failTooManyRequests = (description = 'Too Many Requests', code = null, message = '') => {
-    res.fail(description, responseCodes.too_many_requests, code, message);
+  res.failTooManyRequests = (description = 'Too Many Requests', code = null) => {
+    res.fail(description, responseCodes.too_many_requests, code);
   };
 
-  res.failServerError = (description = 'Internal Server Error', code = null, message = '') => {
-    res.fail(description, responseCodes.server_error, code, message);
+  res.failServerError = (description = 'Internal Server Error', code = null) => {
+    res.fail(description, responseCodes.server_error, code);
   };
 
   if (next !== null)
-      next();
+    next();
 };
 
 module.exports = {
