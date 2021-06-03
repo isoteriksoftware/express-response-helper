@@ -64,7 +64,7 @@ describe('GET /unauthorized', () => {
       .get('/unauthorized')
       .expect(401, {
         status: 401,
-        error: 401,
+        error: '401',
         messages: 'Unauthorized'
       })
       .end(done);
@@ -77,7 +77,7 @@ describe('GET /forbidden', () => {
       .get('/forbidden')
       .expect(403, {
         status: 403,
-        error: 403,
+        error: '403',
         messages: 'Forbidden'
       })
       .end(done);
@@ -90,7 +90,7 @@ describe('GET /not-found', () => {
       .get('/not-found')
       .expect(404, {
         status: 404,
-        error: 404,
+        error: '404',
         messages: 'Not Found'
       })
       .end(done);
@@ -103,7 +103,7 @@ describe('POST /conflict', () => {
       .post('/conflict')
       .expect(409, {
         status: 409,
-        error: 409,
+        error: '409',
         messages: 'Conflict'
       })
       .end(done);
@@ -116,7 +116,7 @@ describe('GET /gone', () => {
       .get('/gone')
       .expect(410, {
         status: 410,
-        error: 410,
+        error: '410',
         messages: 'Gone'
       })
       .end(done);
@@ -129,7 +129,7 @@ describe('GET /overload', () => {
       .get('/overload')
       .expect(429, {
         status: 429,
-        error: 429,
+        error: '429',
         messages: 'Too Many Requests'
       })
       .end(done);
@@ -142,7 +142,7 @@ describe('POST /bad-request', () => {
       .post('/bad-request')
       .expect(400, {
         status: 400,
-        error: 400,
+        error: '400',
         messages: 'Bad request'
       })
       .end(done);
@@ -155,7 +155,7 @@ describe('POST /validation-error', () => {
       .post('/validation-error')
       .expect(400, {
         status: 400,
-        error: 400,
+        error: '400',
         messages: ['Error 1', 'Error 2', 'Error 3']
       })
       .end(done);
@@ -168,7 +168,7 @@ describe('POST /server-error', () => {
       .post('/server-error')
       .expect(500, {
         status: 500,
-        error: 500,
+        error: '500',
         messages: 'Internal Server Error'
       })
       .end(done);

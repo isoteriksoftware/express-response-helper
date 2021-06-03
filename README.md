@@ -99,7 +99,7 @@ app.post('/user', function(req, res) {
 **.fail(messages [, status] [, code])**: This function is a generic function for responses that generally indicate errors. All but one parameters are optional:
   - `messages` can be a string, an object or an array of error messages indicating what went wrong. This parameter is the only required parameter.
   - `status` is the HTTP status code and is 400 by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 This function internally generate a json response body in the following format. For example, when `messages` is a string, `status` is 400 and `code` is null, the response looks like:
 ```json
@@ -172,7 +172,7 @@ app.post('/clear_logs', function(req, res) {
 <br></br>
 **.failUnauthorized([description] [, code])**: Returns a response with a status code of 401 by default. Useful when the client either has not been authorized, or has incorrect authorization. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Unauthorized** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -183,7 +183,7 @@ app.get('/secret', function(req, res) {
 <br></br>
 **.failForbidden([description] [, code])**: Returns a response with a status code of 403 by default. Useful when the requested API endpoint is never allowed. Unauthorized implies the client is encouraged to try again with different credentials. Forbidden means the client should not try again because it won’t help. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Forbidden** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -194,7 +194,7 @@ app.get('/forbidden', function(req, res) {
 <br></br>
 **.failNotFound([description] [, code])**: Returns a response with a status code of 404 by default. Useful when the requested resource cannot be found. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Not Found** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -205,7 +205,7 @@ app.get('/user/2', function(req, res) {
 <br></br>
 **.failValidationError([description] [, code])**: Returns a response with a status code of 400 by default. Useful when data the client sent did not pass validation rules. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Bad Request** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -216,7 +216,7 @@ app.post('/user', function(req, res) {
 <br></br>
 **.failResourceExists([description] [, code])**: Returns a response with a status code of 409 by default. Useful when the resource the client is trying to create already exists. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Conflict** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -227,7 +227,7 @@ app.post('/user', function(req, res) {
 <br></br>
 **.failResourceGone([description] [, code])**: Returns a response with a status code of 410 by default. Useful when the requested resource was previously deleted and is no longer available. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Gone** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -238,7 +238,7 @@ app.get('/user', function(req, res) {
 <br></br>
 **.failTooManyRequests([description] [, code])**: Returns a response with a status code of 429 by default. Useful when the client has called an API endpoint too many times. This might be due to some form of throttling or rate limiting. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Too Many Requests** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
@@ -249,7 +249,7 @@ app.get('/data', function(req, res) {
 <br></br>
 **.failServerError([description] [, code])**: Returns a response with a status code of 500 by default. Useful when there is a server error. All parameters are optional:
   - `description` can be a string, an object or an array of error messages indicating what went wrong. The value is **Internal Server Error** by default.
-  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used. It is null by default.
+  - `code` can be used to specify a custom error code (it doesn't have to be a number). When it is null, the `status` code will be used (as a string). It is null by default.
   
 Example:
 ```javascript
