@@ -49,7 +49,7 @@ const responseHelper = (req, res, next = null) => {
   res.fail = (messages, status = 400, code = null) => {
     const response = {
       status:   status,
-      error:    code || status,
+      error:    code || status.toString(),
       messages: messages
     };
 
