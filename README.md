@@ -49,7 +49,7 @@ app.get('/404', function(req, res) {
   /*
     {
       "status": 404,
-      "error": 404,
+      "error": "404",
       "messages": "Resoure Not Found"
     }
   */
@@ -105,7 +105,7 @@ This function internally generate a json response body in the following format. 
 ```json
 {
   "status": 400,
-  "error": 400,
+  "error": "400",
   "messages": "Error Message"
 }
 ```
@@ -113,7 +113,7 @@ and when `messages` is an array:
 ```json
 {
   "status": 400,
-  "error": 400,
+  "error": "400",
   "messages": [
     "Error 1", "Error 2", "Error 3"
   ]
